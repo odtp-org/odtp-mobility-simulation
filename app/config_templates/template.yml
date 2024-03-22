@@ -1,3 +1,12 @@
 # Use the variable name between squared brackets to replace values in the template. 
 constant_string: /odtp/odtp-workdir/cache
-value_to_replace: [variable_key]
+#value_to_replace: [variable_key]
+
+# Requested stages
+#run:
+
+# These are configuration options that we use in the pipeline
+config:
+  data_path: /odtp/odtp-workdir/data
+  output_path: /odtp/odtp-workdir/output
+  output_id: {{output_id}}
