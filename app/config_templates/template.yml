@@ -1,12 +1,54 @@
-# Use the variable name between squared brackets to replace values in the template. 
-constant_string: /odtp/odtp-workdir/cache
-#value_to_replace: [variable_key]
+# True reading from db, false reading from data_dir
+database: True
+# simulated, whether to use simulated or real data
+simulated: True
 
-# Requested stages
-#run:
+data_dir: "./data/input"
+loc_seq_file: "loc_seq.csv"
+locs_file: "locs.csv"
 
-# These are configuration options that we use in the pipeline
-config:
-  data_path: /odtp/odtp-workdir/data
-  output_path: /odtp/odtp-workdir/output
-  output_id: {{output_id}}
+
+# parameters from empirical distribution
+wait:
+  # could be lognormal, powerlaw or truncpowerlaw 
+  type: "lognormal"
+
+  # parameter for lognormal
+  mu: 0.75
+  sigma: 1.49
+
+  # parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
+  alpha: 1.2
+
+  # parameters for truncpowerlaw
+  Lambda: 0.5
+
+jump:
+  # could be lognormal, powerlaw or truncpowerlaw 
+  type: "lognormal"
+
+  # parameter for lognormal
+  mu: 7.72
+  sigma: 2.38
+
+  # parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
+  alpha: 1.2
+
+  # parameters for truncpowerlaw
+  Lambda: 0.5
+
+rho:
+  type: "normal"
+  mu: 0.64
+  sigma: 0.16
+
+gamma:
+  type: "normal"
+  mu: 0.18
+  sigma: 0.069
+
+# shall be within [0, 1]; change to non 0 value to perform hard interventions
+P: 0.0
+
+
+

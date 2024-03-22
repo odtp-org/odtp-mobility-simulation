@@ -40,6 +40,21 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
 
+##################################################
+# GDAL Setup
+##################################################
+
+RUN apt-get update && \
+    apt-get install -y libgdal-dev && \
+    apt-get clean;
+
+    
+
+# Installing dependecies from the app
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
+
 ######################################################################
 # ODTP COMPONENT CONFIGURATION. 
 # DO NOT TOUCH UNLESS YOU KNOW WHAT YOU ARE DOING.

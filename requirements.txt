@@ -1,1 +1,9 @@
-# Please list here all python dependencies of your tool
+  - conda-forge
+  - defaults
+  - python=3.10
+  - geopandas
+  - scipy
+  - numpy
+  - pyyaml
+  - powerlaw
+  - trackintel = 1.2.2
