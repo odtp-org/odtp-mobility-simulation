@@ -10,9 +10,9 @@
 # Clone the repository of your tool and checkout to one specific commit. 
 #########################################################
 
-# git clone https://github.com/odtp-org/tool-example.git /odtp/odtp-workdir/tool-example
-# cd /odtp/odtp-workdir/tool-example
-# git checkout xxxxxxxxxxxx
+ git clone https://github.com/irmlma/mobility-simulation.git /odtp1/odtp-workdir/irmlma
+ cd /odtp1/odtp-workdir/irmlma
+ git checkout xxxxxxxxxxxx
 
 #########################################################
 # 2. CONFIG FILE CONFIGURATION
