@@ -35,10 +35,6 @@ RUN pip install -r /tmp/odtp.requirements.txt
 # PLEASE INSTALL HERE ALL SYSTEM DEPENDENCIES RELATED TO YOUR TOOL
 #######################################################################
 
-# Installing dependecies from the app
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
-
 
 ##################################################
 # GDAL Setup
@@ -74,8 +70,8 @@ RUN mkdir /odtp \
     /odtp/odtp-output 
 
 # This last 2 folders are specific from odtp-eqasim
-RUN mkdir /odtp/odtp-workdir/cache \
-    /odtp/odtp-workdir/output 
+# RUN mkdir /odtp/odtp-workdir/cache \
+#     /odtp/odtp-workdir/output 
 
 # This copy all the information for running the ODTP component
 COPY odtp.yml /odtp/odtp-config/odtp.yml

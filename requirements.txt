@@ -7,3 +7,4 @@
   - pyyaml
   - powerlaw
   - trackintel = 1.2.2
+  - psycopg2
