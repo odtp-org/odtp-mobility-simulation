@@ -3,7 +3,7 @@ database: False
 # simulated, whether to use simulated or real data
 simulated: False
 
-data_dir: "./data/input"
+data_dir: "/odtp/odtp-input/"
 loc_seq_file: "loc_seq.csv"
 locs_file: "locs.csv"
 

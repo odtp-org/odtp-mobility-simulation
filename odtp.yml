@@ -178,7 +178,7 @@ parameters:
   - name: P
     default-value: 0
     datatype: float
-    description: TBD
+    description: shall be within [0, 1]; change to non 0 value to perform hard interventions
     parameter-bounds:
       - 0
       - 1
