@@ -15,7 +15,7 @@ ODTP component for running Mobsim.
 3. Build the dockerfile 
 
 ```
-docker build -t Mobsim .
+docker build -t odtp-mobility-simulation .
 ```
 
 4. Run the following command. Mount the correct volumes for input/output folders. 
@@ -24,7 +24,7 @@ docker build -t Mobsim .
 docker run -it --rm \
 -v {PATH_TO_YOUR_INPUT_VOLUME}:/odtp/odtp-input \
 -v {PATH_TO_YOUR_OUTPUT_VOLUME}:/odtp/odtp-output \
---env-file .env odtp-Mobsim
+--env-file .env odtp-mobility-simulation
 ```
 
 ## Example 

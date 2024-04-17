@@ -1,22 +1,218 @@
-# This file should contain basic component information for your component.
-component-name: mobsim
-component-author: Ye Hong
-component-version: 0.0.2
-component-repository: https://github.com/irmlma/mobility-simulation
-component-license: Apache-2.0
+component-name: odtp-eqasim-matsim
+component-author: Ye Hong & Carlos Vivar Rios
+component-version: 0.0.1
+component-repository: https://github.com/odtp-org/odtp-eqasim
+component-license: AGPL-3.0
 component-type: ephemeral
-component-description: Description
+component-description: ODTP component for running Eqasim Matsim Pipeline.
+tags:
+  - mobility
+  - simulation
+
+# Information about the tools
+tools:
+  - tool-name: irmlma/mobility-simulation
+    tool-author: Ye Hong & Simon 
+    tool-version: fb1112d2a7d1817746be84413da584c391059ad1
+    tool-repository: https://github.com/irmlma/mobility-simulation
+    tool-license: Apache 2.0
+
+# If your tool require some secrets token to be passed as ENV to the component
+# This won't be traced in MongoDB
+secrets: null
+
+# If the tool requires some building arguments such as Matlab license
+build-args: null
 
 # If applicable, ports exposed by the component
 # Include Name, Description, and Port Value for each port
-ports:
-  - name: api
-    description: api
-    port-value: 7100
-  - name: logger
-    description: logger
-    port-value: 7101
+ports: null
 
+# If applicable, parameters exposed by the component
+# Datatype can be str, int, float, or bool.
+parameters:
+  - name: WAIT_TYPE
+    default-value: lognormal
+    datatype: string
+    description: parameters from empirical distribution
+    options:
+      - lognormal
+      - powerlaw
+      - truncpowerlaw
+    allow-custom-value: false
+
+  - name: WAIT_MU
+    default-value: 0.75
+    datatype: float
+    description: parameters from empirical distribution
+    parameter-bounds:
+      - 0
+      - 1
+    options: null
+    allow-custom-value: false
+
+  - name: WAIT_SIGMA
+    default-value: 1.49
+    datatype: float
+    description: parameter for lognormal
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: WAIT_ALPHA
+    default-value: 1.2
+    datatype: float
+    description: parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: WAIT_LAMBDA
+    default-value: 0.5
+    datatype: float
+    description: parameters for truncpowerlaw
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: JUMP_TYPE
+    default-value: lognormal
+    datatype: string
+    description: to be developed
+    options:
+      - lognormal
+      - powerlaw
+      - truncpowerlaw
+    parameter-bounds: null
+    allow-custom-value: true
+
+  - name: JUMP_MU
+    default-value: 7.72
+    datatype: float
+    description: parameter for lognormal
+    parameter-bounds:
+      - 0
+      - 10
+    allow-custom-value: true
+
+  - name: JUMP_SIGMA
+    default-value: 2.38
+    datatype: float
+    description: parameter for lognormal
+    parameter-bounds:
+      - 0
+      - 10
+    allow-custom-value: true
+
+  - name: JUMP_ALPHA
+    default-value: 2.38
+    datatype: float
+    description: parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
+    parameter-bounds:
+      - 0
+      - 10
+    allow-custom-value: true
+
+  - name: JUMP_LAMBDA
+    default-value: 0.5
+    datatype: float
+    description: parameters for truncpowerlaw
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: RHO_TYPE
+    default-value: normal
+    datatype: string
+    description: TBD
+    parameter-bounds: null
+    allow-custom-value: true
+
+  - name: RHO_MU
+    default-value: 0.64
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: RHO_SIGMA
+    default-value: 0.16
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: GAMMA_TYPE
+    default-value: normal
+    datatype: string
+    description: TBD
+    parameter-bounds: null
+    allow-custom-value: true
+
+  - name: GAMMA_MU
+    default-value: 0.18
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: GAMMA_SIGMA
+    default-value: 0.069
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 1
+    allow-custom-value: true
+
+  - name: P
+    default-value: 0
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 1
+    allow-custom-value: true
+
+
+
+# If applicable, data-input list required by the component
+data-inputs:
+  - name: loc_seq.csv
+    type: csv
+    path: loc_seq.csv
+    description: TBD
+  - name: locs.csv
+    type: csv
+    path: locs.csv
+    description: TBD
+
+# If applicable, data-output list produced by the component
+data-output:
+  - name: dtepr.csv
+    type: csv
+    path: dtepr.csv
+    description: TBD
+
+
+# If applicable, path to schemas to perform semantic validation.
+# Still under development. Ignore.
+schema-input: null
+schema-output: null
+
+# If applicable, define devices needed such as GPU.
+devices:
+  gpu: false
 
 
 

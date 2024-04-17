@@ -10,13 +10,12 @@
 # Clone the repository of your tool and checkout to one specific commit. 
 #########################################################
 
-git clone https://github.com/irmlma/mobility-simulation.git /odtp/odtp-workdir/irmlma
+git clone https://github.com/irmlma/mobility-simulation.git /odtp/odtp-workdir/mobility-simulation
 
-cd /odtp/odtp-workdir/irmlma
-git checkout c71bc65641cbd5aae2db9bfaa3b4afa3690e47c7
+cd /odtp/odtp-workdir/mobility-simulation
+git checkout 351ebf85e0872c558d124f502f9a347039042849
 
-pip install -e .
-
+pip install .
 
 #########################################################
 # 2. CONFIG FILE CONFIGURATION
@@ -27,12 +26,13 @@ pip install -e .
 #python3 $HOME/code/python/odtp1/odtp-workdir/irmlma/parameters.py $HOME/code/python/odtp1/odtp-workdir/irmlma/app/config_templates/template.yml $HOME/code/python/odtp1/odtp-workdir/irmlma/config.yml
 echo "Running the mobsim PIPELINE"
 
-python3 /odtp/odtp-app/odtp-workdir/parameters.py /odtp/odtp-app/config_templates/template.yml /odtp/odtp-workdir/config.yml
+#python3 /odtp/odtp-app/odtp-workdir/parameters.py /odtp/odtp-app/config_templates/template.yml /odtp/odtp-workdir/config.yml
 #########################################################
 # 3. INPUT FOLDER MANAGEMENT
 #########################################################
 
-#ln -s /odtp/odtp-input/... /odtp/odtp-workdir/...
+# Expected: loc_seq.csv and locs.csv
+ln -s /odtp/odtp-input/ /odtp/odtp-workdir/mobility_simulation/data/input
 
 #########################################################
 # 4. TOOL EXECUTION
@@ -49,7 +49,7 @@ python3 /odtp/odtp-app/odtp-workdir/parameters.py /odtp/odtp-app/config_template
 # While the output is managed by ODTP and placed in /odtp/odtp-output/
 
 
-python3 mobsim/scripts/run.py
+python3 /odtp/odtp-workdir/irmlma/mobility-simulation/scripts/run.py
 
 
 #########################################################

@@ -1,7 +1,7 @@
 # True reading from db, false reading from data_dir
-database: True
+database: False
 # simulated, whether to use simulated or real data
-simulated: True
+simulated: False
 
 data_dir: "./data/input"
 loc_seq_file: "loc_seq.csv"
@@ -11,44 +11,44 @@ locs_file: "locs.csv"
 # parameters from empirical distribution
 wait:
   # could be lognormal, powerlaw or truncpowerlaw 
-  type: "lognormal"
+  type: {{WAIT_TYPE}} #"lognormal"
 
   # parameter for lognormal
-  mu: 0.75
-  sigma: 1.49
+  mu: {{WAIT_MU}} #0.75
+  sigma: {{WAIT_SIGMA}} #1.49
 
   # parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
-  alpha: 1.2
+  alpha: {{WAIT_ALPHA}} #1.2
 
   # parameters for truncpowerlaw
-  Lambda: 0.5
+  Lambda: {{WAIT_LAMBDA}} #0.5
 
 jump:
   # could be lognormal, powerlaw or truncpowerlaw 
-  type: "lognormal"
+  type: {{JUMP_TYPE}} #"lognormal"
 
   # parameter for lognormal
-  mu: 7.72
-  sigma: 2.38
+  mu: {{JUMP_MU}} #7.72
+  sigma: {{JUMP_SIGMA}} #2.38
 
   # parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
-  alpha: 1.2
+  alpha: {{JUMP_ALPHA}} #1.2
 
   # parameters for truncpowerlaw
-  Lambda: 0.5
+  Lambda: {{JUMP_LAMBDA}} #0.5
 
 rho:
-  type: "normal"
-  mu: 0.64
-  sigma: 0.16
+  type: {{RHO_TYPE}} #"normal"
+  mu: {{RHO_MU}} #0.64
+  sigma: {{RHO_SIGMA}} #0.16
 
 gamma:
-  type: "normal"
-  mu: 0.18
-  sigma: 0.069
+  type: {{GAMMA_TYPE}} #"normal"
+  mu: {{GAMMA_MU}} #0.18
+  sigma: {{GAMMA_SIGMA}} #0.069
 
 # shall be within [0, 1]; change to non 0 value to perform hard interventions
-P: 0.0
+P: {{P}} #0.0
 
 
 
