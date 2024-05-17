@@ -1,1 +1,8 @@
-# Please list here all python dependencies of your tool
+geopandas==0.14.3
+scipy==1.13.0
+numpy==1.26.4
+pyyaml==6.0.1
+powerlaw==1.5
+trackintel==1.2.2
+psycopg2==2.9.9
+easydict==1.13

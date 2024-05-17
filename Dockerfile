@@ -1,7 +1,7 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 RUN apt update
-RUN apt install python3 python3-pip -y
+RUN apt install python3.10 python3-pip -y 
 
 ##################################################
 # Ubuntu setup
@@ -35,6 +35,17 @@ RUN pip install -r /tmp/odtp.requirements.txt
 # PLEASE INSTALL HERE ALL SYSTEM DEPENDENCIES RELATED TO YOUR TOOL
 #######################################################################
 
+
+##################################################
+# GDAL Setup
+##################################################
+
+RUN apt-get update && \
+    apt-get install -y libgdal-dev && \
+    apt-get clean;
+
+    
+
 # Installing dependecies from the app
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
@@ -59,8 +70,8 @@ RUN mkdir /odtp \
     /odtp/odtp-output 
 
 # This last 2 folders are specific from odtp-eqasim
-RUN mkdir /odtp/odtp-workdir/cache \
-    /odtp/odtp-workdir/output 
+# RUN mkdir /odtp/odtp-workdir/cache \
+#     /odtp/odtp-workdir/output 
 
 # This copy all the information for running the ODTP component
 COPY odtp.yml /odtp/odtp-config/odtp.yml

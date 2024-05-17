@@ -1,82 +1,218 @@
-# This file should contain basic component information for your component.
-component-name: Component Name
-component-author: Component Author
-component-version: Component Version
-component-repository: Component Repository
-component-license: Component License
-component-type: ephemeral or interactive
-component-description: Description
+component-name: odtp-eqasim-matsim
+component-author: Ye Hong & Carlos Vivar Rios
+component-version: 0.0.1
+component-repository: https://github.com/odtp-org/odtp-eqasim
+component-license: AGPL-3.0
+component-type: ephemeral
+component-description: ODTP component for running Eqasim Matsim Pipeline.
 tags:
-  - tag1
-  - tag2
+  - mobility
+  - simulation
 
-# Information about the tool
-tool-name: Tool name
-tool-author: Tool's author
-tool-version: Tool version
-tool-repository: Tool's repository
-tool-license: Tool's license
+# Information about the tools
+tools:
+  - tool-name: irmlma/mobility-simulation
+    tool-author: Ye Hong & Simon 
+    tool-version: fb1112d2a7d1817746be84413da584c391059ad1
+    tool-repository: https://github.com/irmlma/mobility-simulation
+    tool-license: Apache 2.0
+
+# If your tool require some secrets token to be passed as ENV to the component
+# This won't be traced in MongoDB
+secrets: null
+
+# If the tool requires some building arguments such as Matlab license
+build-args: null
 
 # If applicable, ports exposed by the component
 # Include Name, Description, and Port Value for each port
-ports:
-  - name: PORT A
-    description: Description of Port A
-    port-value: XXXX
-  - name: PORT B
-    description: Description of Port B
-    port-value: YYYY
+ports: null
 
 # If applicable, parameters exposed by the component
 # Datatype can be str, int, float, or bool.
 parameters:
-  - name: PARAMETER A
-    default-value: DEFAULT_VALUE_A
-    datatype: DATATYPE_A
-    description: Description of Parameter A
-    parameter-bounds: # Boundaries for int and float datatype
-      - 0 # Lower bound
-      - inf # Upper bound
+  - name: WAIT_TYPE
+    default-value: lognormal
+    datatype: string
+    description: parameters from empirical distribution
+    options:
+      - lognormal
+      - powerlaw
+      - truncpowerlaw
+    allow-custom-value: false
+
+  - name: WAIT_MU
+    default-value: 0.75
+    datatype: float
+    description: parameters from empirical distribution
+    parameter-bounds:
+      - 0
+      - 1
     options: null
-    allow-custom-value: false # If true the user can add a custom value out of parameter-bounds, or options
-  - name: PARAMETER B
-    default-value: DEFAULT_VALUE_B
-    datatype: DATATYPE_B
-    description: Description of Parameter B
+    allow-custom-value: false
+
+  - name: WAIT_SIGMA
+    default-value: 1.49
+    datatype: float
+    description: parameter for lognormal
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: WAIT_ALPHA
+    default-value: 1.2
+    datatype: float
+    description: parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: WAIT_LAMBDA
+    default-value: 0.5
+    datatype: float
+    description: parameters for truncpowerlaw
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: JUMP_TYPE
+    default-value: lognormal
+    datatype: string
+    description: to be developed
+    options:
+      - lognormal
+      - powerlaw
+      - truncpowerlaw
     parameter-bounds: null
-    options: # If your string parameter is limited to a few option, please list them here. 
-      - OptionA
-      - OptionB
-      - OptionC
-    allow-custom-value: false # If true the user can add a custom value out of parameter-bounds, or options
+    allow-custom-value: true
+
+  - name: JUMP_MU
+    default-value: 7.72
+    datatype: float
+    description: parameter for lognormal
+    parameter-bounds:
+      - 0
+      - 10
+    allow-custom-value: true
+
+  - name: JUMP_SIGMA
+    default-value: 2.38
+    datatype: float
+    description: parameter for lognormal
+    parameter-bounds:
+      - 0
+      - 10
+    allow-custom-value: true
+
+  - name: JUMP_ALPHA
+    default-value: 2.38
+    datatype: float
+    description: parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
+    parameter-bounds:
+      - 0
+      - 10
+    allow-custom-value: true
+
+  - name: JUMP_LAMBDA
+    default-value: 0.5
+    datatype: float
+    description: parameters for truncpowerlaw
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: RHO_TYPE
+    default-value: normal
+    datatype: string
+    description: TBD
+    parameter-bounds: null
+    allow-custom-value: true
+
+  - name: RHO_MU
+    default-value: 0.64
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: RHO_SIGMA
+    default-value: 0.16
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: GAMMA_TYPE
+    default-value: normal
+    datatype: string
+    description: TBD
+    parameter-bounds: null
+    allow-custom-value: true
+
+  - name: GAMMA_MU
+    default-value: 0.18
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 2
+    allow-custom-value: true
+
+  - name: GAMMA_SIGMA
+    default-value: 0.069
+    datatype: float
+    description: TBD
+    parameter-bounds:
+      - 0
+      - 1
+    allow-custom-value: true
+
+  - name: P
+    default-value: 0
+    datatype: float
+    description: shall be within [0, 1]; change to non 0 value to perform hard interventions
+    parameter-bounds:
+      - 0
+      - 1
+    allow-custom-value: true
+
+
 
 # If applicable, data-input list required by the component
 data-inputs:
-  - name: INPUT A
-    type: TYPE_A # Folder or filetype
-    path: VALUE_A  
-    description: Description of Input A
-  - name: INPUT B
-    type: TYPE_B # Folder or filetype
-    path: VALUE_B  
-    description: Description of Input B
+  - name: loc_seq.csv
+    type: csv
+    path: loc_seq.csv
+    description: TBD
+  - name: locs.csv
+    type: csv
+    path: locs.csv
+    description: TBD
 
 # If applicable, data-output list produced by the component
 data-output:
-  - name: OUTPUT A
-    type: TYPE_A # Folder or filetype
-    path: VALUE_A
-    description: Description of Output A
-  - name: OUTPUT B
-    type: TYPE_B # Folder or filetype
-    path: VALUE_B
-    description: Description of Output B
+  - name: dtepr.csv
+    type: csv
+    path: dtepr.csv
+    description: TBD
+
 
 # If applicable, path to schemas to perform semantic validation.
 # Still under development. Ignore.
-schema-input: PATH_TO_INPUT_SCHEMA
-schema-output: PATH_TO_OUTPUT_SCHEMA
+schema-input: null
+schema-output: null
 
 # If applicable, define devices needed such as GPU.
 devices:
   gpu: false
+
+
+
