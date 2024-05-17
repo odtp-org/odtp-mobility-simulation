@@ -7,6 +7,8 @@ data_dir: "/odtp/odtp-input/"
 loc_seq_file: "loc_seq.csv"
 locs_file: "locs.csv"
 
+# optionally input projected coordinate system for speed up calculation 
+proj_crs: "EPSG:2056" # None or "EPSG:2056" etc.
 
 # parameters from empirical distribution
 wait:

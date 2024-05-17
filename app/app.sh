@@ -24,7 +24,7 @@ pip install .
 
 echo "Running the mobsim PIPELINE"
 
-python3 /odtp/odtp-app/odtp-workdir/parameters.py /odtp/odtp-app/config_templates/template.yml /odtp/odtp-workdir/mobility-simulation/config/onfig.yml
+python3 /odtp/odtp-component-client/parameters.py /odtp/odtp-app/config_templates/template.yml /odtp/odtp-workdir/mobility-simulation/config/config.yml
 
 #########################################################
 # 3. INPUT FOLDER MANAGEMENT
@@ -38,7 +38,7 @@ python3 /odtp/odtp-app/odtp-workdir/parameters.py /odtp/odtp-app/config_template
 # While the output is managed by ODTP and placed in /odtp/odtp-output/
 #########################################################
 
-python3 /odtp/odtp-workdir/irmlma/mobility-simulation/scripts/run.py
+python3 /odtp/odtp-workdir/mobility-simulation/mobsim/scripts/run.py
 
 
 #########################################################
@@ -46,7 +46,7 @@ python3 /odtp/odtp-workdir/irmlma/mobility-simulation/scripts/run.py
 # The selected output files generated should be placed in the output folder
 #########################################################
 
-cp -r /odtp/odtp-workdir/mobility_simulation/data/output/ /odtp/odtp-output
+cp -r /odtp/odtp-workdir/mobility-simulation/data/output/* /odtp/odtp-output
 
 ############################################################################################
 # END OF MANUAL USER APP
