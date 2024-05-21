@@ -1,7 +1,7 @@
-component-name: odtp-eqasim-matsim
+component-name: odtp-mobility-simulation
 component-author: Ye Hong & Carlos Vivar Rios
 component-version: 0.0.1
-component-repository: https://github.com/odtp-org/odtp-eqasim
+component-repository: https://github.com/odtp-org/odtp-mobility-simulation
 component-license: AGPL-3.0
 component-type: ephemeral
 component-description: ODTP component for running Eqasim Matsim Pipeline.
