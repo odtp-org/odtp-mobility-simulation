@@ -184,18 +184,34 @@ parameters:
       - 1
     allow-custom-value: true
 
+  - name: LOC_SEQ_FILE
+    default-value: loc_seq.csv
+    datatype: string
+    description: Input filename
+    parameter-bounds: null
+    allow-custom-value: true
+
+  - name: LOCS_FILE
+    default-value: locs.csv
+    datatype: string
+    description: Input filename
+    parameter-bounds: null
+    allow-custom-value: true
 
 
 # If applicable, data-input list required by the component
 data-inputs:
   - name: loc_seq.csv
     type: csv
-    path: loc_seq.csv
+    path: null
     description: TBD
+    parameter: LOC_SEQ_FILE
+
   - name: locs.csv
     type: csv
-    path: locs.csv
+    path: null
     description: TBD
+    parameter: LOCS_FILE
 
 # If applicable, data-output list produced by the component
 data-output:

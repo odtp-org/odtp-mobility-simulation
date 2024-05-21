@@ -30,7 +30,6 @@ python3 /odtp/odtp-component-client/parameters.py /odtp/odtp-app/config_template
 # 3. INPUT FOLDER MANAGEMENT
 #########################################################
 
-
 # Not needed as input is define in the config file
 
 #########################################################

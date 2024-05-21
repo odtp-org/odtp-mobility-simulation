@@ -16,190 +16,46 @@ odtp new odtp-component-entry \
 --repository https://github.com/odtp-org/odtp-mobility-simulation.git
 ``` 
 
-## DETAILS
+## Data sheet
 
-### PARAMETERS
+### Parameters
 
-```
-parameters:
-  - name: WAIT_TYPE
-    default-value: lognormal
-    datatype: string
-    description: parameters from empirical distribution
-    options:
-      - lognormal
-      - powerlaw
-      - truncpowerlaw
-    allow-custom-value: false
+| Parameter    | Description                                                                 | Default Value |
+|--------------|-----------------------------------------------------------------------------|---------------|
+| WAIT_TYPE    | parameters from empirical distribution                                      | lognormal     |
+| WAIT_MU      | parameters from empirical distribution                                      | 0.75          |
+| WAIT_SIGMA   | parameter for lognormal                                                     | 1.49          |
+| WAIT_ALPHA   | parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)   | 1.2           |
+| WAIT_LAMBDA  | parameters for truncpowerlaw                                                | 0.5           |
+| JUMP_TYPE    | to be developed                                                             | lognormal     |
+| JUMP_MU      | parameter for lognormal                                                     | 7.72          |
+| JUMP_SIGMA   | parameter for lognormal                                                     | 2.38          |
+| JUMP_ALPHA   | parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)   | 2.38          |
+| JUMP_LAMBDA  | parameters for truncpowerlaw                                                | 0.5           |
+| RHO_TYPE     | TBD                                                                         | normal        |
+| RHO_MU       | TBD                                                                         | 0.64          |
+| RHO_SIGMA    | TBD                                                                         | 0.16          |
+| GAMMA_TYPE   | TBD                                                                         | normal        |
+| GAMMA_MU     | TBD                                                                         | 0.18          |
+| GAMMA_SIGMA  | TBD                                                                         | 0.069         |
+| P            | shall be within [0, 1]; change to non-0 value to perform hard interventions | 0             |
+| LOC_SEQ_FILE | Input filename                                                              | loc_seq.csv   |
+| LOCS_FILE    | Input filename                                                              | locs.csv      |
 
-  - name: WAIT_MU
-    default-value: 0.75
-    datatype: float
-    description: parameters from empirical distribution
-    parameter-bounds:
-      - 0
-      - 1
-    options: null
-    allow-custom-value: false
+### Data Inputs
 
-  - name: WAIT_SIGMA
-    default-value: 1.49
-    datatype: float
-    description: parameter for lognormal
-    parameter-bounds:
-      - 0
-      - 2
-    allow-custom-value: true
+| File/Folder | Type | Path | Description | Parameter    |
+|-------------|------|------|-------------|--------------|
+| loc_seq.csv | csv  | null | TBD         | LOC_SEQ_FILE |
+| locs.csv    | csv  | null | TBD         | LOCS_FILE    |
 
-  - name: WAIT_ALPHA
-    default-value: 1.2
-    datatype: float
-    description: parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
-    parameter-bounds:
-      - 0
-      - 2
-    allow-custom-value: true
 
-  - name: WAIT_LAMBDA
-    default-value: 0.5
-    datatype: float
-    description: parameters for truncpowerlaw
-    parameter-bounds:
-      - 0
-      - 2
-    allow-custom-value: true
+### Data Output
 
-  - name: JUMP_TYPE
-    default-value: lognormal
-    datatype: string
-    description: to be developed
-    options:
-      - lognormal
-      - powerlaw
-      - truncpowerlaw
-    parameter-bounds: null
-    allow-custom-value: true
+| File/Folder | Type | Path       | Description | 
+|-------------|------|------------|-------------|
+| dtepr.csv   | csv  | dtepr.csv  | TBD         |
 
-  - name: JUMP_MU
-    default-value: 7.72
-    datatype: float
-    description: parameter for lognormal
-    parameter-bounds:
-      - 0
-      - 10
-    allow-custom-value: true
-
-  - name: JUMP_SIGMA
-    default-value: 2.38
-    datatype: float
-    description: parameter for lognormal
-    parameter-bounds:
-      - 0
-      - 10
-    allow-custom-value: true
-
-  - name: JUMP_ALPHA
-    default-value: 2.38
-    datatype: float
-    description: parameter for both powerlaw (default 1.2) and truncpowerlaw (default 1.1)
-    parameter-bounds:
-      - 0
-      - 10
-    allow-custom-value: true
-
-  - name: JUMP_LAMBDA
-    default-value: 0.5
-    datatype: float
-    description: parameters for truncpowerlaw
-    parameter-bounds:
-      - 0
-      - 2
-    allow-custom-value: true
-
-  - name: RHO_TYPE
-    default-value: normal
-    datatype: string
-    description: TBD
-    parameter-bounds: null
-    allow-custom-value: true
-
-  - name: RHO_MU
-    default-value: 0.64
-    datatype: float
-    description: TBD
-    parameter-bounds:
-      - 0
-      - 2
-    allow-custom-value: true
-
-  - name: RHO_SIGMA
-    default-value: 0.16
-    datatype: float
-    description: TBD
-    parameter-bounds:
-      - 0
-      - 2
-    allow-custom-value: true
-
-  - name: GAMMA_TYPE
-    default-value: normal
-    datatype: string
-    description: TBD
-    parameter-bounds: null
-    allow-custom-value: true
-
-  - name: GAMMA_MU
-    default-value: 0.18
-    datatype: float
-    description: TBD
-    parameter-bounds:
-      - 0
-      - 2
-    allow-custom-value: true
-
-  - name: GAMMA_SIGMA
-    default-value: 0.069
-    datatype: float
-    description: TBD
-    parameter-bounds:
-      - 0
-      - 1
-    allow-custom-value: true
-
-  - name: P
-    default-value: 0
-    datatype: float
-    description: TBD
-    parameter-bounds:
-      - 0
-      - 1
-    allow-custom-value: true
-
-```
-
-### Input data
-
-```
-data-inputs:
-  - name: loc_seq.csv
-    type: csv
-    path: loc_seq.csv
-    description: TBD
-  - name: locs.csv
-    type: csv
-    path: locs.csv
-    description: TBD
-```
-
-### Output data
-
-```
-data-output:
-  - name: dtepr.csv
-    type: csv
-    path: dtepr.csv
-    description: TBD
-```
 
 ## Tutorial
 
@@ -209,7 +65,7 @@ data-output:
 
 - data
 
-2. Create your `.env` file with this structure.
+2. Create your `.env` file following the example in `.env.dist`.
 
 3. Build the dockerfile 
 
@@ -226,6 +82,9 @@ docker run -it --rm \
 --env-file .env odtp-mobility-simulation
 ```
 
+```
+docker run -it --rm -v /c/Users/Carlos/pro/odtp-mobility-simulation/odtp-input:/odtp/odtp-input -v /c/Users/Carlos/pro/odtp-mobility-simulation/odtp-output:/odtp/odtp-output --env-file .env odtp-mobility-simulation
+```
 
 
 ## Changelog

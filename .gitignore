@@ -1,3 +1,7 @@
+# ODTP testing
+odtp-input/
+odtp-output/
+
 # Mac crap
 .DS_Store
 
