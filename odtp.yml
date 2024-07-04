@@ -1,6 +1,6 @@
 component-name: odtp-mobility-simulation
 component-author: Ye Hong & Carlos Vivar Rios
-component-version: 0.0.1
+component-version: 0.1.0
 component-repository: https://github.com/odtp-org/odtp-mobility-simulation
 component-license: AGPL-3.0
 component-type: ephemeral

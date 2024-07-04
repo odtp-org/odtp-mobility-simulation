@@ -89,7 +89,7 @@ docker run -it --rm -v /c/Users/Carlos/pro/odtp-mobility-simulation/odtp-input:/
 
 ## Changelog
 
-- v0.0.1 
+- v0.1.0 
     - Initial relase
 
 ## Development. 
