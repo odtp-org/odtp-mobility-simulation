@@ -81,4 +81,7 @@ COPY ./odtp-component-client /odtp/odtp-component-client
 COPY ./app /odtp/odtp-app
 WORKDIR /odtp
 
+# Fix for end of the line issue on Windows. Avoid error when building on windows
+RUN find /odtp -type f -iname "*.sh" -exec sed -i 's/\r$//' {} \;
+
 ENTRYPOINT ["bash", "/odtp/odtp-component-client/startup.sh"]

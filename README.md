@@ -12,7 +12,7 @@ ODTP component for running mobility simulation
 ```odtp new component 
 odtp new odtp-component-entry \
 --name odtp-mobility-simulation \
---component-version 0.0.1 \
+--component-version v0.1.1 \
 --repository https://github.com/odtp-org/odtp-mobility-simulation.git
 ``` 
 
@@ -89,8 +89,13 @@ docker run -it --rm -v /c/Users/Carlos/pro/odtp-mobility-simulation/odtp-input:/
 
 ## Changelog
 
+- v0.1.1
+    - Client updated to v0.1.2
+    - Github action for dockerhub publishing inlcuded
+    - Added fix when building on windows
+
 - v0.1.0 
-    - Initial relase
+    - Initial release
 
 ## Development. 
 
